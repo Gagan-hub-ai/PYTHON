@@ -1,0 +1,37 @@
+import random
+
+def play_game():
+    target = random.randint(1, 100)
+    attempts = 0  
+
+    while True:
+        user_choice = input("Guess the number : ").strip()
+
+        if user_choice.upper() == "Q":  
+            print("You quit the game. The correct number was:", target)
+            break
+
+        if not user_choice.isdigit():  
+            print("Invalid input. Please enter a number or 'Q' to quit.")
+            continue
+
+        user_choice = int(user_choice)
+        attempts += 1  
+
+        if user_choice == target:
+            print(f"Success: Correct Guess! 🎉 You took {attempts} attempts.")
+            break
+        elif user_choice < target:
+            print("Too small! Try a bigger number...")
+        else:
+            print("Too big! Try a smaller number...")
+
+    print("----GAME OVER----")
+
+
+while True:
+    play_game()
+    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+    if play_again != "yes":
+        print("Thanks for playing! 👋")
+        break
